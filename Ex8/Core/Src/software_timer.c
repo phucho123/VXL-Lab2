@@ -7,21 +7,25 @@
 
 #include "software_timer.h"
 
-int timer_counter[2] = {0,0};
-int timer_flag[2] = {0,0};
+int timer_counter0 = 0,timer_counter1 = 0;
+int timer_flag0 = 0,timer_flag1 = 0;
 
-void setTimer(int index,int duration){
-	timer_counter[index] = duration;
-	timer_flag[index] = 0;
+void setTimer0(int duration){
+	timer_counter0 = duration;
+	timer_flag0 = 0;
+}
+void setTimer1(int duration){
+	timer_counter1 = duration;
+	timer_flag1 = 0;
 }
 
 void timerRun(){
-	for(int i = 0;i<2;i++){
-		if(timer_counter[i] > 0){
-			timer_counter[i]--;
-			if(timer_counter[i] <= 0){
-				timer_flag[i] = 1;
-			}
-		}
+	timer_counter0--;
+	if(timer_counter0 <= 0){
+		timer_flag0 = 1;
+	}
+	timer_counter1--;
+	if(timer_counter1 <= 0){
+		timer_flag1 = 1;
 	}
 }

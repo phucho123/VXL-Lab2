@@ -69,13 +69,14 @@ int arr[10] = {
 		0x0090,  //9
 };
 void display_7segment(int number){
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,(number>>0)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,(number>>1)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,(number>>2)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,(number>>3)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,(number>>4)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,(number>>5)&0x01);
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,(number>>6)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,(number>>0)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,(number>>1)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,(number>>2)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,(number>>3)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,(number>>4)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,(number>>5)&0x01);
+//	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,(number>>6)&0x01);
+	GPIOB->ODR = arr[number];
 }
 /* USER CODE END 0 */
 
@@ -257,10 +258,10 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,en1);
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,en2);
 	if(!en1){
-		display_7segment(arr[1]);
+		display_7segment(1);
 	}
 	else if(!en2){
-		display_7segment(arr[2]);
+		display_7segment(2);
 	}
 }
 
